@@ -9,25 +9,42 @@ const NewsDetails = () => {
     const { id } = useParams();
     const [news, setNews] = useState({});
 
-    // console.log(data,id,news);
     useEffect(() => {
+        // Scroll to top when News Details page loads
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+
         const NewsDetails = data.find(singleNews => singleNews.id == id);
         setNews(NewsDetails);
     }, [data, id]);
+
     return (
         <div>
-            <header className='py-3'>
-                <Header></Header>
+            <header className="py-3">
+                <Header />
             </header>
 
-            <main className='w-11/12 mx-auto grid grid-cols-12 gap-5 '>
-                <section className='col-span-9'>
-                    <h2 className='font-bold mb-5'>News Details</h2>
-                    <NewsDetailsCard news={news}></NewsDetailsCard>
+            <main className="w-11/12 max-w-7xl mx-auto grid grid-cols-12 gap-6">
+
+                <section className="col-span-9">
+                    <h2 className="font-bold mb-5">
+                        News Details
+                    </h2>
+
+                    {news?.id && (
+                        <NewsDetailsCard news={news} />
+                    )}
                 </section>
-                <aside className='col-span-3'>
-                    <RightAside></RightAside>
+
+                {/* Sticky Right Aside */}
+                <aside className="col-span-3">
+                    <div className="sticky top-5">
+                        <RightAside />
+                    </div>
                 </aside>
+
             </main>
         </div>
     );
