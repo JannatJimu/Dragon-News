@@ -7,6 +7,7 @@ import Navbar from '../components/Navbar';
 import RightAside from '../components/HomeLayout/RightAside';
 import LeftAside from '../components/HomeLayout/LeftAside';
 import Loading from '../pages/Loading';
+import Footer from '../components/Footer';
 
 
 const HomeLayout = () => {
@@ -33,6 +34,7 @@ const HomeLayout = () => {
                 </aside>
                 
             </main>
+            <footer className=' my-2 '><Footer></Footer></footer>
         </div>
     );
 };
